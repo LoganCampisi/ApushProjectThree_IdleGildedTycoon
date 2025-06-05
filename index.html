@@ -1,21 +1,929 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Basic Website</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face{font-family: GameFont; src: url(Emigrate.otf)
+        
+        }
+            :root {
+            --primary: rgb(54, 46, 46);
+            /*#4e54c8*/
+            --secondary: grey;
+            /*#8f94fb*/
+            --accent: #ffb347;
+            --bg: #222;
+            --text: #222;
+            --card: #ffff;
+            --border: #e0e0e0;
+        }
+        body {
+            background-image: url(Copilot_20250605_084724.png); align-items: center;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+        header {
+            margin-top: 20px;
+            background-image: url(Screenshot\ 2025-05-28\ 141651.png); align-items: center;
+            background-size: fill;
+            background-position:top;
+            color: white;
+            padding: 1px 0 35px 0;
+            text-align: center;
+            position: relative; top: 0px;
+            box-shadow: 0 2px 8px rgba(228, 228, 230, 0.1);
+            outline-style: ridge;
+            outline-color: yellow;
+            margin-bottom: 50px;
+        }
+        .headerText{
+            color: black;
+            position: relative; bottom: 30px;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: yellow;
+        }
+        .headerTextBIG{
+            font-size: 100px;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: yellow;
+        }
+        header h1 {
+            margin: 0p;
+            font-size: 5rem;
+            letter-spacing: 3px;
+        }
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.75rem;
+            text-decoration-thickness: 20px;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            padding: 80 px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+            padding: 24px;
+            min-width: 450px;
+            max-width: 550px;
+            max-height: 550px;
+            flex: 1 1 340px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            outline-style: ridge;
+            outline-color: yellow;
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-family: times;
+        }
+        .upgradeCard {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+            padding: 24px;
+            min-width: 320px;
+            max-width: 550px;
+            max-height: 550px;
+            flex: 1 1 340px;
+            margin-bottom: 24px;
+        }
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+        .stat .label {
+            color: #666;
+        }
+        .stat .value {
+            font-weight: bold;
+        }
+        .btn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+        .resetBTN {
+            background: yellow;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .upgrade-list {
+            list-style-type: circle;
+            padding: 1;
+            margin: 0;
+        }
+        .upgrade-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .upgrade-item:last-child {
+            border-bottom: none;
+        }
+        .upgrade-info {
+            flex: 1;
+        }
+        .upgrade-title {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .upgrade-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .upgrade-btn {
+            margin-left: 16px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .upgrade-btn:disabled {
+            background: #ddd;
+            color: #aaa;
+        }
+        .log {
+            background: #f9f9ff;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            height: 120px;
+            overflow-y: auto;
+            font-size: 0.98rem;
+            margin-top: 12px;
+        }
+        .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .achievement {
+            background: #e3e6ff;
+            color: #4e54c8;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .achievement.unlocked {
+            background: var(--accent);
+            color: #fff;
+            opacity: 1;
+        }
+        .tab-bar {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+            
+        }
+        .tab-content{
+            max-height: 550px;
+            overflow: scroll;
+            scrollbar-width: .5px;
+            overflow-x: hidden;
+        }
+        .upgrade-list{
+            max-height: 480px;
+        }
+        .tab-btn {
+            background: #f0f0f0;
+            /*#f0f0f0*/
+            border: none;
+            border-radius: 6px 6px 0 0;
+            padding: 8px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #666;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-btn.active {
+            background: var(--card);
+            color: var(--primary);
+            font-weight: bold;
+            border-bottom: 2px solid rgb(175, 175, 0);
+            /*var(--primary)*/
+        }
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;;
+                align-items: center;
+            }
+            .card {
+                min-width: 90vw;
+                max-width: 98vw;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to My Website</h1>
-  </header>
-  <main>
-    <p>This is a basic starter site. Replace this text with your own content!</p>
-  </main>
-  <footer>
-    <p>&copy; 2025 My Website</p>
-  </footer>
-  <script src="script.js"></script>
+    <header>
+        <h1 class="headerTextBIG">Idle Gilded Tycoon</h1>
+        <p class="headerText">Grow your Gilded empire, hire the working class, upgrade, and become a Captain of Industry!</p>
+    </header>
+    <main>
+        <section class="card" id="stats-card">
+            <h2>Company Stats</h2>
+            <div class="stats">
+                <div class="stat"><span class="label">Cash:</span> <span class="value" id="cash">$0</span></div>
+                <div class="stat"><span class="label">Revenue/sec:</span> <span class="value" id="revenue">$0</span></div>
+                <div class="stat"><span class="label">Level:</span> <span class="value" id="level">1</span></div>
+                <div class="stat"><span class="label">Employees:</span> <span class="value" id="employees">0</span></div>
+                <div class="stat"><span class="label">Products:</span> <span class="value" id="products">0</span></div>
+                <div class="stat"><span class="label">Investors:</span> <span class="value" id="investors">0</span></div>
+            </div>
+            <button class="btn" id="collect-btn">Collect Revenue</button>
+            <button class="btn" id="prestige-btn" style="margin-top:8px;">Prestige (Reset for Investors)</button>
+            <div class="log" id="log"></div>
+        </section>
+        <section class="card" id="actions-card">
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="upgrades">Upgrades</button>
+                <button class="tab-btn" data-tab="employees">Employees</button>
+                <button class="tab-btn" data-tab="products">Products</button>
+                <button class="tab-btn" data-tab="achievements">Achievements</button>
+            </div>
+            <div id="tab-upgrades" class="tab-content">
+                <h2>Upgrades</h2>
+                <ul class="upgrade-list" id="upgrade-list"></ul>
+            </div>
+            <div id="tab-employees" class="tab-content" style="display:none;">
+                <h2>Hire Employees</h2>
+                <ul class="upgrade-list" id="employee-list"></ul>
+            </div>
+            <div id="tab-products" class="tab-content" style="display:none;">
+                <h2>Develop Products</h2>
+                <ul class="upgrade-list" id="product-list"></ul>
+            </div>
+            <div id="tab-achievements" class="tab-content" style="display:none;">
+                <h2>Achievements</h2>
+                <div class="achievements" id="achievement-list"></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // --- Game Data Structures ---
+        const game = {
+            cash: 0,
+            revenue: 1,
+            level: 1,
+            employees: 0,
+            products: 0,
+            investors: 0,
+            prestigeMultiplier: 1,
+            upgrades: {},
+            employeesList: {},
+            productsList: {},
+            achievements: {},
+            log: [],
+            lastTick: Date.now(),
+            offlineEarnings: 0,
+        };
+
+        // --- Upgrades ---
+        const upgrades = [
+            {
+                id: 'office',
+                name: 'Horizontally Integrate More Offices.',
+                desc: 'Increase revenue by 25%.',
+                baseCost: 150,
+                costMult: 2.5,
+                effect: (g) => { g.revenue *= 1.25; },
+                owned: 0,
+                max: 75,
+            },
+            {
+                id: 'marketing',
+                name: 'Move to New York (Enter a larger Market).',
+                desc: 'Increase revenue by 50%.',
+                baseCost: 500,
+                costMult: 2.8,
+                effect: (g) => { g.revenue *= 1.5; },
+                owned: 0,
+                max: 50,
+            },
+            {
+                id: 'automation',
+                name: 'Sales Automation',
+                desc: 'Revenue is collected automatically.',
+                baseCost: 2000,
+                costMult: 0,
+                effect: (g) => { g.automation = true; },
+                owned: 0,
+                max: 1,
+            },
+            {
+                id: 'Donate',
+                name: 'Donate to a good cause!',
+                desc: 'Increase product revenue by 75%.',
+                baseCost: 10000,
+                costMult: 2.7,
+                effect: (g) => { g.productRevenueMult = (g.productRevenueMult || 1) * 1.75; },
+                owned: 0,
+                max: 25,
+            },
+            {
+                id: 'AssmblyLine',
+                name: 'Copy Fords Assembly Line.',
+                desc: 'Increase all revenue by 100%.',
+                baseCost: 50000,
+                costMult: 3.2,
+                effect: (g) => { g.revenue *= 2; },
+                owned: 0,
+                max: 15,
+            },
+            {
+                id: 'Trusts',
+                name: 'Trust Upgrade',
+                desc: 'Unlocks Prestige (Mrs. Wheeler).',
+                baseCost: 1000000,
+                costMult: 1,
+                effect: (g) => { g.canPrestige = true; },
+                owned: 0,
+                max: 1,
+            },
+        ];
+
+        // --- Employees ---
+        const employees = [
+            {
+                id: 'RandWom',
+                name: 'Random Woman',
+                desc: 'Single Mother looking for work. Caution: Partakes in rallies for rights. Increases revenue by $2/sec.',
+                baseCost: 50,
+                costMult: 1.5,
+                effect: (g) => { g.revenue += 2; },
+                owned: 0,
+                max: 100,
+            },
+            {
+                id: 'LogSos',
+                name: 'Logan Sosnowski',
+                desc: 'Irish Immigrant. Left home because of potato famine and now needs work desperately. Increases revenue by $5/sec.',
+                baseCost: 70,
+                costMult: 1.6,
+                effect: (g) => { g.revenue += 5; },
+                owned: 0,
+                max: 50,
+            },
+            {
+                id: 'JayJig',
+                name: 'Jay Jiang',
+                desc: 'Asian immigrant. Extremely poor but very good worker. Increases revenue by $10/sec.',
+                baseCost: 120,
+                costMult: 1.7,
+                effect: (g) => { g.revenue += 10; },
+                owned: 0,
+                max: 30,
+            },
+            {
+                id: 'MasKov',
+                name: 'Mason Kovacik',
+                desc: 'British Immigrant running from THE monarchy. Not a great worker but EXTREMELY desperate. Boosts all employee revenue by $15/sec.',
+                baseCost: 300,
+                costMult: 2,
+                effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.1; },
+                owned: 0,
+                max: 10,
+            },
+            {
+                id: 'CharBuy',
+                name: 'Charlelelo Buyse',
+                desc: 'Young kid born from western farmers. Still learning but boosts moral.  Boosts all employee revenue by $20/sec.',
+                baseCost: 300,
+                costMult: 2,
+                effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.5; },
+                owned: 0,
+                max: 10,
+            },
+            {
+                id: 'GraCap',
+                name: 'Grasso Capola',
+                desc: 'Italian. Will likely become the next big Captain of Industry to better to hire now than later.  Boosts all employee revenue by $30/sec.',
+                baseCost: 300,
+                costMult: 2,
+                effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.9; },
+                owned: 0,
+                max: 10,
+            },
+        
+        ];
+
+        // --- Products ---
+        const products = [
+            {
+                id: 'BessProc',
+                name: 'Bessemer Process',
+                desc: 'Adds $5/sec product revenue.',
+                baseCost: 200,
+                costMult: 2,
+                effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 5; },
+                owned: 0,
+                max: 20,
+            },
+            {
+                id: 'EdiLiBulb',
+                name: 'Edison Light Bulb',
+                desc: 'Adds $15/sec product revenue.',
+                baseCost: 800,
+                costMult: 2.5,
+                effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 15; },
+                owned: 0,
+                max: 10,
+            },
+            {
+                id: 'ModelT',
+                name: 'Ford Model T',
+                desc: 'Adds $50/sec product revenue.',
+                baseCost: 3000,
+                costMult: 3,
+                effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 50; },
+                owned: 0,
+                max: 5,
+            },
+            {
+                id: 'SwitchBoard',
+                name: 'The Switch Board',
+                desc: 'Adds $100/sec product revenue.',
+                baseCost: 10000,
+                costMult: 4,
+                effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 100; },
+                owned: 0,
+                max: 5,
+            }
+        ];
+
+        // --- Achievements ---
+        const achievements = [
+            {
+                id: 'first_cash',
+                name: 'First Earnings',
+                desc: 'Earn $100 cash.',
+                check: (g) => g.cash >= 100,
+            },
+            {
+                id: 'first_employee',
+                name: 'First Hire',
+                desc: 'Hire your first employee.',
+                check: (g) => g.employees > 0,
+            },
+            {
+                id: 'first_product',
+                name: 'First Product',
+                desc: 'Develop your first product.',
+                check: (g) => g.products > 0,
+            },
+            {
+                id: 'upgrade_master',
+                name: 'Upgrade Master',
+                desc: 'Buy 5 upgrades.',
+                check: (g) => Object.values(g.upgrades).reduce((a,b)=>a+b,0) >= 5,
+            },
+            {
+                id: 'millionaire',
+                name: 'Millionaire',
+                desc: 'Reach $1,000,000 cash.',
+                check: (g) => g.cash >= 1_000_000,
+            },
+            {
+                id: 'tycoon',
+                name: 'Tycoon',
+                desc: 'Reach $10,000,000 cash.',
+                check: (g) => g.cash >= 10_000_000,
+            },
+            {
+                id: 'investor',
+                name: 'Investor',
+                desc: 'Prestige for the first time.',
+                check: (g) => g.investors > 0,
+            },
+        ];
+
+        // --- Utility Functions ---
+        function formatMoney(n) {
+            if (n < 1e3) return '$' + n.toFixed(0);
+            if (n < 1e6) return '$' + (n/1e3).toFixed(1) + 'K';
+            if (n < 1e9) return '$' + (n/1e6).toFixed(2) + 'M';
+            if (n < 1e12) return '$' + (n/1e9).toFixed(2) + 'B';
+            return '$' + (n/1e12).toFixed(2) + 'T';
+        }
+
+        function log(msg) {
+            game.log.push(`[${new Date().toLocaleTimeString()}] ${msg}`);
+            if (game.log.length > 30) game.log.shift();
+            updateLog();
+        }
+
+        function updateLog() {
+            document.getElementById('log').innerHTML = game.log.slice(-10).map(l => `<div>${l}</div>`).join('');
+        }
+
+        // --- Rendering Functions ---
+        function updateStats() {
+            document.getElementById('cash').textContent = formatMoney(game.cash);
+            document.getElementById('revenue').textContent = formatMoney(getTotalRevenue()) + '/sec';
+            document.getElementById('level').textContent = game.level;
+            document.getElementById('employees').textContent = game.employees;
+            document.getElementById('products').textContent = game.products;
+            document.getElementById('investors').textContent = game.investors;
+        }
+
+        function renderUpgrades() {
+            const ul = document.getElementById('upgrade-list');
+            ul.innerHTML = '';
+            upgrades.forEach(upg => {
+                const owned = game.upgrades[upg.id] || 0;
+                const cost = Math.floor(upg.baseCost * Math.pow(upg.costMult, owned));
+                const li = document.createElement('li');
+                li.className = 'upgrade-item';
+                li.innerHTML = `
+                    <div class="upgrade-info">
+                        <div class="upgrade-title">${upg.name} ${owned > 0 ? `Lv.${owned}` : ''}</div>
+                        <div class="upgrade-desc">${upg.desc}</div>
+                        <div class="upgrade-desc">Cost: ${formatMoney(cost)}</div>
+                    </div>
+                    <button class="upgrade-btn" ${game.cash < cost || owned >= upg.max ? 'disabled' : ''} data-upgrade="${upg.id}">
+                        Buy
+                    </button>
+                `;
+                ul.appendChild(li);
+            });
+        }
+
+        function renderEmployees() {
+            const ul = document.getElementById('employee-list');
+            ul.innerHTML = '';
+            employees.forEach(emp => {
+                const owned = game.employeesList[emp.id] || 0;
+                const cost = Math.floor(emp.baseCost * Math.pow(emp.costMult, owned));
+                const li = document.createElement('li');
+                li.className = 'upgrade-item';
+                li.innerHTML = `
+                    <div class="upgrade-info">
+                        <div class="upgrade-title">${emp.name} ${owned > 0 ? `x${owned}` : ''}</div>
+                        <div class="upgrade-desc">${emp.desc}</div>
+                        <div class="upgrade-desc">Cost: ${formatMoney(cost)}</div>
+                    </div>
+                    <button class="upgrade-btn" ${game.cash < cost || owned >= emp.max ? 'disabled' : ''} data-employee="${emp.id}">
+                        Hire
+                    </button>
+                `;
+                ul.appendChild(li);
+            });
+        }
+
+        function renderProducts() {
+            const ul = document.getElementById('product-list');
+            ul.innerHTML = '';
+            products.forEach(prod => {
+                const owned = game.productsList[prod.id] || 0;
+                const cost = Math.floor(prod.baseCost * Math.pow(prod.costMult, owned));
+                const li = document.createElement('li');
+                li.className = 'upgrade-item';
+                li.innerHTML = `
+                    <div class="upgrade-info">
+                        <div class="upgrade-title">${prod.name} ${owned > 0 ? `x${owned}` : ''}</div>
+                        <div class="upgrade-desc">${prod.desc}</div>
+                        <div class="upgrade-desc">Cost: ${formatMoney(cost)}</div>
+                    </div>
+                    <button class="upgrade-btn" ${game.cash < cost || owned >= prod.max ? 'disabled' : ''} data-product="${prod.id}">
+                        Develop
+                    </button>
+                `;
+                ul.appendChild(li);
+            });
+        }
+
+        function renderAchievements() {
+            const div = document.getElementById('achievement-list');
+            div.innerHTML = '';
+            achievements.forEach(ach => {
+                const unlocked = !!game.achievements[ach.id];
+                const el = document.createElement('div');
+                el.className = 'achievement' + (unlocked ? ' unlocked' : '');
+                el.innerHTML = `<strong>${ach.name}</strong><br><span style="font-size:0.95em;">${ach.desc}</span>`;
+                div.appendChild(el);
+            });
+        }
+
+        // --- Revenue Calculation ---
+        function getTotalRevenue() {
+            let rev = game.revenue;
+            // Employees
+            let empRev = 0;
+            employees.forEach(emp => {
+                const owned = game.employeesList[emp.id] || 0;
+                if (emp.id === 'manager') return;
+                empRev += owned * parseFloat(emp.desc.match(/\$([\d.]+)/)[1]);
+            });
+            // Employee boost
+            if (game.employeeBoost) {
+                empRev *= game.employeeBoost;
+            }
+            // Products
+            let prodRev = game.productRevenue || 0;
+            if (game.productRevenueMult) prodRev *= game.productRevenueMult;
+            // Prestige
+            let prestige = Math.max(1, game.prestigeMultiplier || 1);
+            // Investors
+            let investorBoost = 1 + (game.investors || 0) * 0.1;
+            return Math.floor((rev + empRev + prodRev) * prestige * investorBoost);
+        }
+
+        // --- Game Logic ---
+        function buyUpgrade(id) {
+            const upg = upgrades.find(u => u.id === id);
+            if (!upg) return;
+            const owned = game.upgrades[id] || 0;
+            if (owned >= upg.max) return;
+            const cost = Math.floor(upg.baseCost * Math.pow(upg.costMult, owned));
+            if (game.cash < cost) return;
+            game.cash -= cost;
+            game.upgrades[id] = owned + 1;
+            upg.effect(game);
+            log(`Purchased upgrade: ${upg.name}`);
+            renderUpgrades();
+            updateStats();
+            checkAchievements();
+        }
+
+        function hireEmployee(id) {
+            const emp = employees.find(e => e.id === id);
+            if (!emp) return;
+            const owned = game.employeesList[id] || 0;
+            if (owned >= emp.max) return;
+            const cost = Math.floor(emp.baseCost * Math.pow(emp.costMult, owned));
+            if (game.cash < cost) return;
+            game.cash -= cost;
+            game.employeesList[id] = owned + 1;
+            emp.effect(game);
+            game.employees++;
+            log(`Hired: ${emp.name}`);
+            renderEmployees();
+            updateStats();
+            checkAchievements();
+        }
+
+        function developProduct(id) {
+            const prod = products.find(p => p.id === id);
+            if (!prod) return;
+            const owned = game.productsList[id] || 0;
+            if (owned >= prod.max) return;
+            const cost = Math.floor(prod.baseCost * Math.pow(prod.costMult, owned));
+            if (game.cash < cost) return;
+            game.cash -= cost;
+            game.productsList[id] = owned + 1;
+            prod.effect(game);
+            game.products++;
+            log(`Developed: ${prod.name}`);
+            renderProducts();
+            updateStats();
+            checkAchievements();
+        }
+
+        function collectRevenue() {
+            const rev = getTotalRevenue();
+            game.cash += rev;
+            log(`Collected ${formatMoney(rev)} revenue.`);
+            updateStats();
+            checkAchievements();
+        }
+
+        function prestige() {
+            if (!game.canPrestige) {
+                log('You need to buy {Trust Upgrade} to attract Mrs. Wheeler and form a Trust.');
+                return;
+            }
+            const investorsGained = Math.floor(Math.sqrt(game.cash) / 1000);
+            if (investorsGained < 1) {
+                log('You need more cash to attract Mrs. Wheeler.');
+                return;
+            }
+            game.investors += investorsGained;
+            game.prestigeMultiplier = 1 + game.investors * 0.1;
+            log(`Successfully Trusted! Gained ${investorsGained}% of Mrs. Wheeler's Interest.`);
+            // Reset everything except investors
+            game.cash = 0;
+            game.revenue = 1;
+            game.level = 1;
+            game.employees = 0;
+            game.products = 0;
+            game.upgrades = {};
+            game.employeesList = {};
+            game.productsList = {};
+            game.productRevenue = 0;
+            game.productRevenueMult = 1;
+            game.employeeBoost = 1;
+            game.canPrestige = false;
+            renderUpgrades();
+            renderEmployees();
+            renderProducts();
+            updateStats();
+            checkAchievements();
+        }
+
+        function checkAchievements() {
+            achievements.forEach(ach => {
+                if (!game.achievements[ach.id] && ach.check(game)) {
+                    game.achievements[ach.id] = true;
+                    log(`Achievement unlocked: ${ach.name}!`);
+                }
+            });
+            renderAchievements();
+        }
+
+        function saveGame() {
+            localStorage.setItem('idleStartupTycoonSave', JSON.stringify(game));
+        }
+
+        function loadGame() {
+            const save = localStorage.getItem('idleStartupTycoonSave');
+            if (save) {
+                const data = JSON.parse(save);
+                Object.assign(game, data);
+            }
+        }
+
+        function handleOfflineEarnings() {
+            const now = Date.now();
+            const diff = Math.floor((now - game.lastTick) / 1000);
+            if (diff > 5) {
+                const offline = getTotalRevenue() * diff;
+                game.cash += offline;
+                log(`While you were away, you earned ${formatMoney(offline)}!`);
+            }
+            game.lastTick = now;
+        }
+
+        // --- Event Listeners ---
+        document.getElementById('collect-btn').onclick = collectRevenue;
+        document.getElementById('prestige-btn').onclick = prestige;
+
+        document.getElementById('upgrade-list').onclick = function(e) {
+            if (e.target.classList.contains('upgrade-btn')) {
+                const id = e.target.getAttribute('data-upgrade');
+                buyUpgrade(id);
+            }
+        };
+        document.getElementById('employee-list').onclick = function(e) {
+            if (e.target.classList.contains('upgrade-btn')) {
+                const id = e.target.getAttribute('data-employee');
+                hireEmployee(id);
+            }
+        };
+        document.getElementById('product-list').onclick = function(e) {
+            if (e.target.classList.contains('upgrade-btn')) {
+                const id = e.target.getAttribute('data-product');
+                developProduct(id);
+            }
+        };
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.onclick = function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none');
+                document.getElementById('tab-' + tab).style.display = '';
+            };
+        });
+
+        // --- Main Game Loop ---
+        function gameLoop() {
+            // Auto collect if automation
+            if (game.automation) {
+                collectRevenue();
+            }
+            // Level up
+            const nextLevel = Math.floor(Math.log10(game.cash +1 ));
+            if (nextLevel > game.level) {
+                game.level = nextLevel;
+                log(`Level up! Your Factory is now level ${game.level}.`);
+            }
+            updateStats();
+            renderUpgrades();
+            renderEmployees();
+            renderProducts();
+            renderAchievements();
+            saveGame();
+        }
+
+        // --- Initialization ---
+        function init() {
+            loadGame();
+            handleOfflineEarnings();
+            renderUpgrades();
+            renderEmployees();
+            renderProducts();
+            renderAchievements();
+            updateLog();
+            checkAchievements();
+            setInterval(() => {
+                game.cash += getTotalRevenue();
+                game.lastTick = Date.now();
+                gameLoop();
+            }, 1000);
+            
+            // Add this interval for smoother GUI updates
+            //setInterval(() => {
+              //  updateStats();
+                //delay = 10;
+            //}, 1);// ~alot of times per second
+        }
+
+        window.addEventListener('beforeunload', saveGame);
+
+        // --- Start Game ---
+        init();
+
+        // --- (Extra) Keyboard Shortcuts ---
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ') {
+                collectRevenue();
+            }
+        });
+
+        // --- (Extra) Reset Game ---
+        // Uncomment below to add a reset button for debugging
+        const resetBtn = document.createElement('button');
+        resetBtn.document.getElementByClass('stats')
+        resetBtn.appendChild()
+        resetBtn.textContent = 'Reset Game';
+        resetBtn.className = 'resetBTN';
+        resetBtn.style.bottom = '20px';
+        resetBtn.onclick = function() {
+           
+            game.cash = 0;
+            game.revenue = 1;
+            game.level = 0;
+            game.employees = 0;
+            game.products = 0;
+            game.upgrades = {};
+            game.employeesList = {};
+            game.productsList = {};
+            game.productRevenue = 0;
+            game.productRevenueMult = 0;
+            game.employeeBoost = 0;
+            game.canPrestige = false;
+            game.investors = 0;
+            renderUpgrades();
+            renderEmployees();
+            renderProducts();
+            updateStats();
+            checkAchievements();;
+            location.reload();
+        };
+        document.body.appendChild(resetBtn);
+
+    </script>
 </body>
-</html>
