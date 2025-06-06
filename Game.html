@@ -340,7 +340,7 @@
                 costMult: 2.5,
                 effect: (g) => { g.revenue *= 1.25; },
                 owned: 0,
-                max: 75,
+                max: Infinity,
             },
             {
                 id: 'marketing',
@@ -350,7 +350,7 @@
                 costMult: 2.8,
                 effect: (g) => { g.revenue *= 1.5; },
                 owned: 0,
-                max: 50,
+                max: Infinity,
             },
             {
                 id: 'automation',
@@ -370,7 +370,7 @@
                 costMult: 2.7,
                 effect: (g) => { g.productRevenueMult = (g.productRevenueMult || 1) * 1.75; },
                 owned: 0,
-                max: 25,
+                max: Infinity,
             },
             {
                 id: 'AssmblyLine',
@@ -380,7 +380,7 @@
                 costMult: 3.2,
                 effect: (g) => { g.revenue *= 2; },
                 owned: 0,
-                max: 15,
+                max: Infinity,
             },
             {
                 id: 'Trusts',
@@ -404,7 +404,7 @@
                 costMult: 1.5,
                 effect: (g) => { g.revenue += 2; },
                 owned: 0,
-                max: 100,
+                max: Infinity,
             },
             {
                 id: 'LogSos',
@@ -414,7 +414,7 @@
                 costMult: 1.6,
                 effect: (g) => { g.revenue += 5; },
                 owned: 0,
-                max: 50,
+                max: Infinity,
             },
             {
                 id: 'JayJig',
@@ -434,7 +434,7 @@
                 costMult: 2,
                 effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.1; },
                 owned: 0,
-                max: 10,
+                max: Infinity,
             },
             {
                 id: 'CharBuy',
@@ -444,7 +444,7 @@
                 costMult: 2,
                 effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.5; },
                 owned: 0,
-                max: 10,
+                max: Infinity,
             },
             {
                 id: 'GraCap',
@@ -454,7 +454,7 @@
                 costMult: 2,
                 effect: (g) => { g.employeeBoost = (g.employeeBoost || 1) * 1.9; },
                 owned: 0,
-                max: 10,
+                max: Infinity,
             },
         
         ];
@@ -469,7 +469,7 @@
                 costMult: 2,
                 effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 5; },
                 owned: 0,
-                max: 20,
+                max: Infinity,
             },
             {
                 id: 'EdiLiBulb',
@@ -479,7 +479,7 @@
                 costMult: 2.5,
                 effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 15; },
                 owned: 0,
-                max: 10,
+                max: Inifnity,
             },
             {
                 id: 'ModelT',
@@ -489,7 +489,7 @@
                 costMult: 3,
                 effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 50; },
                 owned: 0,
-                max: 5,
+                max: Infinity,
             },
             {
                 id: 'SwitchBoard',
@@ -499,7 +499,7 @@
                 costMult: 4,
                 effect: (g) => { g.productRevenue = (g.productRevenue || 0) + 100; },
                 owned: 0,
-                max: 5,
+                max: Infinity,
             }
         ];
 
