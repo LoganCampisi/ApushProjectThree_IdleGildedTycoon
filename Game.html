@@ -555,6 +555,27 @@
             if (n < 1e6) return '$' + (n/1e3).toFixed(1) + 'K';
             if (n < 1e9) return '$' + (n/1e6).toFixed(2) + 'M';
             if (n < 1e12) return '$' + (n/1e9).toFixed(2) + 'B';
+            if (n < 1e15) return '$' + (n/1e12).toFixed(2) + 'T';
+            if (n < 1e18) return '$' + (n/1e15).toFixed(2) + 'Qa';
+            if (n < 1e21) return '$' + (n/1e18).toFixed(2) + 'Qi';
+            if (n < 1e24) return '$' + (n/1e21).toFixed(2) + 'Sx';
+            if (n < 1e27) return '$' + (n/1e24).toFixed(2) + 'Sp';
+            if (n < 1e30) return '$' + (n/1e27).toFixed(2) + 'Oc';
+            if (n < 1e33) return '$' + (n/1e30).toFixed(2) + 'No';
+            if (n < 1e36) return '$' + (n/1e33).toFixed(2) + 'Dc';
+            if (n < 1e39) return '$' + (n/1e36).toFixed(2) + 'UDc';
+            if (n < 1e42) return '$' + (n/1e39).toFixed(2) + 'DDc';
+            if (n < 1e45) return '$' + (n/1e42).toFixed(2) + 'TDc';
+            if (n < 1e48) return '$' + (n/1e45).toFixed(2) + 'QaDc';
+            if (n < 1e51) return '$' + (n/1e48).toFixed(2) + 'QiDc';
+            if (n < 1e54) return '$' + (n/1e51).toFixed(2) + 'SxDc';
+            if (n < 1e57) return '$' + (n/1e54).toFixed(2) + 'SpDc';
+            if (n < 1e60) return '$' + (n/1e57).toFixed(2) + 'ODc';
+            if (n < 1e63) return '$' + (n/1e60).toFixed(2) + 'NDc';
+            if (n < 1e66) return '$' + (n/1e63).toFixed(2) + 'Vg';
+            if (n < 1e69) return '$' + (n/1e66).toFixed(2) + 'UVg';
+            if (n < 1e72) return '$' + (n/1e69).toFixed(2) + 'DVg';
+            if (n < 1e75) return '$' + (n/1e72).toFixed(2) + 'TVg';
             return '$' + (n/1e12).toFixed(2) + 'T';
         }
 
@@ -907,7 +928,7 @@
            
             game.cash = 0;
             game.revenue = 1;
-            game.level = 0;
+            game.level = 1;
             game.employees = 0;
             game.products = 0;
             game.upgrades = {};
