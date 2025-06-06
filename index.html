@@ -91,7 +91,6 @@
             margin-top: 0;
             font-size: 1.3rem;
             color: var(--primary);
-            font-family: times;
         }
         .upgradeCard {
             background: var(--card);
@@ -126,22 +125,24 @@
             color: #fff;
             border: none;
             border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 10px 15px;
+            font-size: .95rem;
             cursor: pointer;
             margin-top: 12px;
             transition: background 0.2s;
         }
-        .resetBTN {
-            background: yellow;
+        .AboutBtn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: #fff;
             border: none;
             border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 8px 15px;
+            font-size: .95rem;
             cursor: pointer;
             margin-top: 12px;
             transition: background 0.2s;
+            position: relative; top: 20px;
+            text-decoration: none;
         }
         .btn:disabled {
             background: #ccc;
@@ -268,7 +269,7 @@
 <body>
     <header>
         <h1 class="headerTextBIG">Idle Gilded Tycoon</h1>
-        <p class="headerText">Grow your Gilded empire, hire the working class, upgrade, and become a Captain of Industry!</p>
+        <p class="headerText">Grow your Gilded empire! Hire the working class, upgrade, and become a Captain of Industry!</p>
     </header>
     <main>
         <section class="card" id="stats-card">
@@ -896,11 +897,12 @@
         // --- (Extra) Reset Game ---
         // Uncomment below to add a reset button for debugging
         const resetBtn = document.createElement('button');
-        resetBtn.document.getElementByClass('stats')
-        resetBtn.appendChild()
         resetBtn.textContent = 'Reset Game';
-        resetBtn.className = 'resetBTN';
+        resetBtn.className = 'btn';
         resetBtn.style.bottom = '20px';
+        const parentElement = document.getElementById('stats-card')
+        const lastElement = document.getElementById('log')
+        parentElement.insertBefore(resetBtn, lastElement)
         resetBtn.onclick = function() {
            
             game.cash = 0;
@@ -923,7 +925,14 @@
             checkAchievements();;
             location.reload();
         };
-        document.body.appendChild(resetBtn);
+        /*document.body.appendChild(resetBtn);*/
+        
+        const aboutBtn = document.createElement('a')
+        aboutBtn.textContent = 'About';
+        aboutBtn.href = 'http://127.0.0.1:3000/IdleGildedTycoonAboutPage';
+        aboutBtn.className = 'AboutBtn';
+        aboutBtn.style.bottom = '20px';
+        parentElement.appendChild(aboutBtn)
 
     </script>
 </body>
