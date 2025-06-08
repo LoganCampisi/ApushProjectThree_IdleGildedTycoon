@@ -890,6 +890,7 @@
 
         // --- Main Game Loop ---
         function gameLoop() {
+          saveGame();
             if (game.automation) {
                 collectRevenue();
             } else {
@@ -910,7 +911,7 @@
             renderAchievements();
             updateLog();
             checkAchievements();
-            savegame();
+            saveGame();
             setInterval(gameLoop, 1000); // Only call gameLoop here
         }
 
