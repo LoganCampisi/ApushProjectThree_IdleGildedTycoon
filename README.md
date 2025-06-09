@@ -1,3 +1,4 @@
+<div style="background-color: black; color: white;>
 <span style="color:blue">some *blue* text</span>.
 
 
