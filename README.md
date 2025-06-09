@@ -1,5 +1,6 @@
-<div style="background-color: black; color: white;>
-<span style="color:blue">some *blue* text</span>.
+<span style="padding:10px;background-color:#f0f0f0"> 
+Text with padding and background.
+</span>
 
 
 
