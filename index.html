@@ -141,7 +141,7 @@ margin-top: 20px;
             cursor: pointer;
             margin-top: 12px;
             transition: background 0.2s;
-            position: relative; top: 20px;
+            position: relative; top: 2px;
             text-decoration: none;
         }
         .btn:disabled {
@@ -934,7 +934,7 @@ margin-top: 20px;
         resetBtn.style.bottom = '20px';
         const parentElement = document.getElementById('stats-card');
         const lastElement = document.getElementById('log');
-        parentElement.insertBefore(resetBtn, lastElement);
+        parentElement.appendChild(resetBtn);
 
         resetBtn.onclick = function() {
             localStorage.removeItem('idleStartupTycoonSave');
@@ -946,7 +946,7 @@ margin-top: 20px;
         aboutBtn.href = 'https://logancampisi.github.io/ApushProjectThree_IdleGildedTycoon/IdleGildedTycoonAboutPage.html';
                 aboutBtn.className = 'AboutBtn';
                 aboutBtn.style.bottom = '20px';
-                parentElement.appendChild(aboutBtn);
+                parentElement.insertBefore(aboutBtn, lastElement);
             </script>
         </body>
         </html>
